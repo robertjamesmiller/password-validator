@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/robertjamesmiller/password-validator.svg?branch=master)](https://travis-ci.org/robertjamesmiller/password-validator)
 
 # a Java Validation Annotation for Passwords
 
