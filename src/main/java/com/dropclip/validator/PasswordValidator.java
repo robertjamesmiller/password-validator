@@ -5,8 +5,7 @@ import javax.validation.ConstraintValidatorContext;
 
 public class PasswordValidator implements ConstraintValidator<Password, CharSequence> {
 
-	public void initialize(Password annotation) {
-	}
+	public void initialize(Password annotation) {}
 	
 	/* 
 	 * (non-Javadoc)
@@ -64,5 +63,4 @@ public class PasswordValidator implements ConstraintValidator<Password, CharSequ
 		
 		return foundNumber && foundAlphaCharacter;
 	}
-
 }

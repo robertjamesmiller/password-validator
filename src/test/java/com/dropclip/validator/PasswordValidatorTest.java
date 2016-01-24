@@ -71,7 +71,7 @@ public class PasswordValidatorTest {
 	}
 	
 	@Test
-	public void passwordWithNonAlphanumericaCharacterAtTheEndShouldBeInvalid() {	
+	public void passwordWithNonAlphanumericCharacterAtTheEndShouldBeInvalid() {	
 		for(int x=0; x < ARRAY_OF_INVALID_CHARACTERS.length; x++){
 			String password = "12345a" + ARRAY_OF_INVALID_CHARACTERS[x];
 			assertFalse(ARRAY_OF_INVALID_CHARACTERS[x] + " is an invalid character." , this.passwordValidator.isValid( password, this.constraintValidatorContext ));
@@ -79,7 +79,7 @@ public class PasswordValidatorTest {
 	}
 	
 	@Test
-	public void passwordWithNonAlphanumericaCharacterAtTheBeginningShouldBeInvalid() {	
+	public void passwordWithNonAlphanumericCharacterAtTheBeginningShouldBeInvalid() {	
 		for(int x=0; x < ARRAY_OF_INVALID_CHARACTERS.length; x++){
 			String password = ARRAY_OF_INVALID_CHARACTERS[x] + "12345a";
 			assertFalse(ARRAY_OF_INVALID_CHARACTERS[x] + " is an invalid character." , this.passwordValidator.isValid( password, this.constraintValidatorContext ));
@@ -87,7 +87,7 @@ public class PasswordValidatorTest {
 	}
 	
 	@Test
-	public void passwordWithNonAlphanumericaCharacterInTheMiddleShouldBeInvalid() {	
+	public void passwordWithNonAlphanumericCharacterInTheMiddleShouldBeInvalid() {	
 		for(int x=0; x < ARRAY_OF_INVALID_CHARACTERS.length; x++){
 			String password = "123" + ARRAY_OF_INVALID_CHARACTERS[x] + "45a";
 			assertFalse(ARRAY_OF_INVALID_CHARACTERS[x] + " is an invalid character." , this.passwordValidator.isValid( password, this.constraintValidatorContext ));
@@ -125,14 +125,14 @@ public class PasswordValidatorTest {
 	}
 	
 	@Test
-	public void passwordWithConsecutivePatternOfLengthAtEndTwoShouldBeInvalid() {
+	public void passwordWithConsecutivePatternOfLengthTwoAtEndShouldBeInvalid() {
 		String password = "1abab";
 		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
 	
 	
 	@Test
-	public void passwordWithConsecutivePatternOfLengthTwoAtEndShouldBeInvalid() {
+	public void passwordWithConsecutivePatternOfLengthTwoAtEndOf12CharacterPasswordShouldBeInvalid() {
 		String password = "12345678abab";
 		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
@@ -185,6 +185,18 @@ public class PasswordValidatorTest {
 		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
 	
+	@Test
+	public void passwordBananaShouldBeInvalid() {
+		String password = "bananas123";
+		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void passwordmississippiShouldBeInvalid() {
+		String password = "mississippi8";
+		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
 	/*
 	 * Valid password scenarios.
 	 */
@@ -209,6 +221,18 @@ public class PasswordValidatorTest {
 	@Test
 	public void lowercaseMixedCharacterWithMultipleNonConsecutiveTwosShouldBeValid() {
 		String password = "a2b2c2d2e2fg";
+		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void lowercaseMixedCharacterWithMultipleNonConsecutiveThreesShouldBeValid() {
+		String password = "ab3cd3ef3gh3";
+		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void lowercaseMixedCharacterWithMultipleABCsShouldBeValid() {
+		String password = "abc3abc4abc5";
 		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
 	
