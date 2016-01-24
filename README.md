@@ -9,7 +9,7 @@ The rules currently known are:
 * Must be between 5 and 12 characters in length.
 * Must not contain any sequence of characters immediately followed by the same sequence.
 
-## Build and install this Java annotation into your local Maven repository: 
+## Install it into your local Maven repository: 
 
     mvn install
     
@@ -17,11 +17,11 @@ The rules currently known are:
 
 This annotation was modeled after the [Hibernate Email Validator Annotation](https://github.com/hibernate/hibernate-validator/blob/03faf186afa26a155fdb621f860422a4574a6bea/engine/src/main/java/org/hibernate/validator/internal/constraintvalidators/hv/EmailValidator.java) 
     
-* Configure your Spring application to use annotations:
+Configure your Spring application to use annotations:
 
     <mvc:annotation-driven/>
 
-* Add the snapshot reference of this jar to your pom.xml
+Add the snapshot reference of this jar to your pom.xml
 
     <dependency>
         <groupId>com.dropclip.validator</groupId>
@@ -29,17 +29,17 @@ This annotation was modeled after the [Hibernate Email Validator Annotation](htt
         <version>0.0.1-SNAPSHOT</version>
     </dependency>
     
-* Add the @Password annotation to a field in a domain object. This annotation only works on fields, and not methods or otherwise.
+Add the @Password annotation to a field in a domain object. This annotation only works on fields, and not methods or otherwise.
 
     @Password
     private String password;
     
-* Customize the validation message with a hard coded value:
+Customize the validation message with a hard coded value:
     
     @Password ( message = "invalid password" )
     private String password;
     
-* Try to break the validation rules described above and please let me know if you're successful!
+Try to break the validation rules described above and please let me know if you're successful!
 
 ### @TODO
 
