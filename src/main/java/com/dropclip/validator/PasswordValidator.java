@@ -29,12 +29,17 @@ public class PasswordValidator implements ConstraintValidator<Password, CharSequ
 			if(!Character.isLetterOrDigit(singleCharacter)){
 				return false;
 			}
-			// return false if an alpha characters is uppercase
+			// return false if an alpha character is uppercase
 			if (Character.isAlphabetic(singleCharacter) && Character.isUpperCase(singleCharacter)){
 				return false;
 			}
-			// return false if consecutive characters are found
-			if (x > 0 && singleCharacter == charSequence.charAt(x-1)){
+			// allow pairs of consecutive characters
+//			// return false if consecutive characters are found
+//			if (x > 0 && singleCharacter == charSequence.charAt(x-1)){
+//				return false;
+//			} else 	
+			// return false if three consecutive of the same character are found
+			if (x > 1 && charSequence.subSequence(x-2, x).equals(charSequence.subSequence(x-1, x+1))){
 				return false;
 			// return false if consecutive pairs of characters are found
 			} else if (x > 2 && charSequence.subSequence(x-3, x-1).equals(charSequence.subSequence(x-1, x+1))){

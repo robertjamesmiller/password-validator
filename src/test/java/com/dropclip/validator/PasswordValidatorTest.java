@@ -95,26 +95,32 @@ public class PasswordValidatorTest {
 	}
 	
 	@Test
-	public void passwordWithConsecutiveLetterShouldBeInvalid() {
-		String password = "12aa345";
+	public void passwordWithThreeConsecutiveLettersShouldBeInvalid() {
+		String password = "12aaa345";
 		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
 	
 	@Test
-	public void passwordWithConsecutiveLetterAtBeginningShouldBeInvalid() {
-		String password = "aa123";
+	public void passwordWithThreeConsecutiveLetterAtBeginningShouldBeInvalid() {
+		String password = "aaa123";
 		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
 	
 	@Test
-	public void passwordWithConsecutiveLetterAtEndShouldBeInvalid() {
-		String password = "12345aa";
+	public void passwordWithThreeConsecutiveLetterAtEndShouldBeInvalid() {
+		String password = "12345aaa";
 		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
 	
 	@Test
-	public void passwordWithConsecutiveNumberShouldBeInvalid() {
-		String password = "12a3345";
+	public void passwordWithThreeConsecutiveNumbersShouldBeInvalid() {
+		String password = "12a33345";
+		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void passwordWithFourConsecutiveNumbersShouldBeInvalid() {
+		String password = "444412345";
 		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
 	
@@ -192,14 +198,56 @@ public class PasswordValidatorTest {
 	}
 	
 	@Test
-	public void passwordmississippiShouldBeInvalid() {
+	public void passwordMississippiShouldBeInvalid() {
 		String password = "mississippi8";
+		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void password1310213102aShouldBeInvalid() {
+		String password = "1310213102a";
+		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void password124123123qsShouldBeInvalid() {
+		String password = "124123123qs";
+		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void password123123qsShouldBeInvalid() {
+		String password = "123123qs";
 		assertFalse( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
 	
 	/*
 	 * Valid password scenarios.
 	 */
+	@Test
+	public void passwordWithConsecutiveLetterShouldBeValid() {
+		String password = "12aa345";
+		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void passwordWithConsecutiveLetterAtBeginningShouldBeValid() {
+		String password = "aa123";
+		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void passwordWithConsecutiveLetterAtEndShouldBeValid() {
+		String password = "12345aa";
+		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void passwordWithConsecutiveNumberShouldBeValid() {
+		String password = "12a3345";
+		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
 	@Test
 	public void lowercaseMixedCharacterPasswordWithLengthOfFiveShouldBeValid() {
 		String password = "1234a";
@@ -236,4 +284,15 @@ public class PasswordValidatorTest {
 		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
 	}
 	
+	@Test
+	public void password1acabcdghabcShouldBeValid() {
+		String password = "1acabcdghabc";
+		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
+	
+	@Test
+	public void password123qs123ShouldBeValid() {
+		String password = "123qs123";
+		assertTrue( this.passwordValidator.isValid( password, this.constraintValidatorContext ) );
+	}
 }
